@@ -32,6 +32,14 @@ func main() {
 			log.Fatal("ERROR", err)
 		}
 		output = strconv.FormatBool(problems.IsOneBitCharacter(inputJSON.Input))
+	case "keepMultiplying":
+		var inputJSON interfaces.KeppMultiplyingParams
+		err := json.Unmarshal(input, &inputJSON)
+		if err != nil {
+			log.Fatal("ERROR", err)
+		}
+
+		output = strconv.Itoa(problems.FindFinalValue(inputJSON.Nums, inputJSON.Original))
 	default:
 		log.Println("Invalid argument")
 	}
